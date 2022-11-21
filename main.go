@@ -15,11 +15,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/sns"
 )
 
-var sess = session.Must(session.NewSession(
-	&aws.Config{
-		Region: aws.String("ap-southeast-1"),
-	},
-))
+var sess = session.Must(session.NewSessionWithOptions(session.Options{
+	SharedConfigState: session.SharedConfigEnable,
+}))
 
 var snsService = sns.New(sess)
 
